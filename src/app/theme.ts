@@ -6,5 +6,22 @@ export const theme = createTheme({
     },
     palette: {
         mode: "light",
+        background: {
+            default: "rgb(249, 252, 255)", // фон страницы
+            // paper: "rgb(249, 252, 255)", // фон карточек / контейнеров
+        },
+    },
+    shape: {
+        borderRadius: 8,
+    },
+    components: {
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    borderRadius: 8,
+                    textTransform: "none",
+                },
+            },
+        },
     },
 });

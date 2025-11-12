@@ -1,5 +1,6 @@
-import { AuthForm } from "./pages/auth";
 import { Box } from "@mui/material";
+
+import { AuthPage } from "@pages/auth";
 
 function App() {
     return (
@@ -12,7 +13,7 @@ function App() {
                 height: "100vh",
             }}
         >
-            <AuthForm />
+            <AuthPage />
         </Box>
     );
 }

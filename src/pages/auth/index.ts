@@ -1,1 +1,1 @@
-export { AuthForm } from "./ui/auth-form.tsx";
+export { AuthPage } from "./ui/auth-page.tsx";
