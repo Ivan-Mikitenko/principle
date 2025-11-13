@@ -2,6 +2,8 @@ import { Box } from "@mui/material";
 
 import { AuthPage } from "@pages/auth";
 
+import { WebEffect } from "./WebEffect.tsx";
+
 function App() {
     return (
         <Box
@@ -13,6 +15,7 @@ function App() {
                 height: "100vh",
             }}
         >
+            <WebEffect />
             <AuthPage />
         </Box>
     );

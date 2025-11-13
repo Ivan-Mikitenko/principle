@@ -27,6 +27,7 @@ export const AuthorizationForm = () => {
                     maxWidth: "450px",
                     flexGrow: 1,
                     outline: "0.5px solid lightgray",
+                    zIndex: 1000,
                 }}
             >
                 <Typography variant="h4" sx={{ mb: 2 }}>
