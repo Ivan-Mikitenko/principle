@@ -1,11 +1,6 @@
-import {
-    Box,
-    Button,
-    Checkbox,
-    FormControlLabel,
-    TextField,
-} from "@mui/material";
+import { Box, Checkbox, FormControlLabel, TextField } from "@mui/material";
 
+import { LoginButton } from "@shared/ui/buttons/LoginButton.tsx";
 import { PasswordField } from "@shared/ui/fields/PasswordField.tsx";
 
 export const AuthForm = () => {
@@ -38,12 +33,7 @@ export const AuthForm = () => {
             </Box>
 
             <Box sx={{ display: "flex", flexDirection: "row", gap: 2 }}>
-                <Button variant="contained" fullWidth>
-                    Вход
-                </Button>
-                <Button variant="outlined" fullWidth>
-                    Регистрация
-                </Button>
+                <LoginButton fullWidth>Вход</LoginButton>
             </Box>
         </>
     );
