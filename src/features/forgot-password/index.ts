@@ -1,2 +1,2 @@
-export { ForgotPassword } from "./ui/ForgotPassword";
-export { LinkPassword } from "./ui/LinkPassword.tsx";
+export { ForgotPassword } from "./ui/forgot-password.tsx";
+export { LinkPassword } from "./ui/link-password.tsx";

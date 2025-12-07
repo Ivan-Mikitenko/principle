@@ -21,6 +21,23 @@ export const theme = createTheme({
                     borderRadius: 8,
                     textTransform: "none",
                 },
+                contained: {
+                    backgroundColor: "#3a3a3a",
+                    color: "#fff",
+                    boxShadow: "none",
+                    transition: "background-color 0.15s ease",
+                    "&:hover": {
+                        backgroundColor: "#4a4a4a",
+                        boxShadow: "none",
+                    },
+                    "&:active": {
+                        backgroundColor: "#2f2f2f",
+                    },
+                },
+                outlined: {
+                    borderColor: "#3a3a3a",
+                    color: "#3a3a3a",
+                },
             },
         },
     },
