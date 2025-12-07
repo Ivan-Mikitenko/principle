@@ -9,6 +9,7 @@ import MuiMenuItem from "@mui/material/MenuItem";
 import { paperClasses } from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 
 import { MenuButton } from "./menu-button.tsx";
 
@@ -19,12 +20,16 @@ const MenuItem = styled(MuiMenuItem)({
 export const OptionsMenu = () => {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
+    const navigate = useNavigate();
+
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
+
     const handleClose = () => {
         setAnchorEl(null);
     };
+
     return (
         <React.Fragment>
             <MenuButton
@@ -54,11 +59,13 @@ export const OptionsMenu = () => {
                     },
                 }}
             >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={() => navigate("/dashboard/profile")}>
+                    Профиль
+                </MenuItem>
                 <Divider />
-                <MenuItem onClick={handleClose}>Add another account</MenuItem>
-                <MenuItem onClick={handleClose}>Settings</MenuItem>
+                <MenuItem onClick={() => navigate("/dashboard/settings")}>
+                    Настройки
+                </MenuItem>
                 <Divider />
                 <MenuItem
                     onClick={handleClose}
@@ -69,7 +76,7 @@ export const OptionsMenu = () => {
                         },
                     }}
                 >
-                    <ListItemText>Logout</ListItemText>
+                    <ListItemText>Выход</ListItemText>
                     <ListItemIcon>
                         <LogoutRoundedIcon fontSize="small" />
                     </ListItemIcon>

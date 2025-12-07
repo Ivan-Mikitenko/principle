@@ -19,11 +19,24 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <Navigate to="blood-tests" />,
+                element: <Navigate to="blood-tests/analyst" />,
             },
             {
                 path: "blood-tests",
-                element: <BloodTestsPage />,
+                children: [
+                    {
+                        index: true,
+                        element: <Navigate to="analyst" />,
+                    },
+                    {
+                        path: "analyst",
+                        element: <BloodTestsPage />,
+                    },
+                    {
+                        path: "dynamic",
+                        element: <div>Динамика анализов</div>,
+                    },
+                ],
             },
             {
                 path: "consultations",
@@ -34,8 +47,16 @@ const router = createBrowserRouter([
                 element: <div>settings</div>,
             },
             {
-                path: "*",
-                element: <div>Not Found</div>,
+                path: "pill-tracking",
+                element: <div>pill-tracking</div>,
+            },
+            {
+                path: "profile",
+                element: <div>Profile XX</div>,
+            },
+            {
+                path: "settings",
+                element: <div>Settings XX</div>,
             },
         ],
     },

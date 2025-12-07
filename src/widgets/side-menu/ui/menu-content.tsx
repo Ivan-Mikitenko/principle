@@ -1,4 +1,8 @@
 import AnalyticsRoundedIcon from "@mui/icons-material/AnalyticsRounded";
+import AutoGraphIcon from "@mui/icons-material/AutoGraph";
+import BloodtypeIcon from "@mui/icons-material/Bloodtype";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
 import HelpRoundedIcon from "@mui/icons-material/HelpRounded";
 import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
 import PeopleRoundedIcon from "@mui/icons-material/PeopleRounded";
@@ -10,13 +14,38 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Stack from "@mui/material/Stack";
+import { type ReactNode, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const mainListItems = [
+import { BloodTestItem } from "@widgets/side-menu/ui/BloodTestItem.tsx";
+
+export type MenuItem = {
+    text: string;
+    icon: ReactNode;
+    path: string;
+    collapse?: boolean;
+    block?: boolean;
+    children?: { text: string; icon: ReactNode; path: string }[];
+};
+
+const mainListItems: MenuItem[] = [
     {
         text: "Анализы крови",
-        icon: <AnalyticsRoundedIcon />,
-        path: "/dashboard/blood-tests",
+        icon: <BloodtypeIcon />,
+        collapse: true,
+        path: "",
+        children: [
+            {
+                text: "AI анализ",
+                icon: <AnalyticsRoundedIcon />,
+                path: "/dashboard/blood-tests/analyst",
+            },
+            {
+                text: "Динамика",
+                icon: <AutoGraphIcon />,
+                path: "/dashboard/blood-tests/dynamic",
+            },
+        ],
     },
     {
         text: "Консультации",
@@ -27,7 +56,6 @@ const mainListItems = [
         text: "Приём таблеток",
         icon: <TaskIcon />,
         path: "/dashboard/pill-tracking",
-        block: true,
     },
 ];
 
@@ -40,26 +68,75 @@ const secondaryListItems = [
 export const MenuContent = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const [open, setOpen] = useState(true);
+
+    const handleClick = () => {
+        setOpen(!open);
+    };
 
     return (
         <Stack sx={{ flexGrow: 1, p: 1, justifyContent: "space-between" }}>
-            <List dense>
-                {mainListItems.map((item, index) => (
-                    <ListItem disablePadding key={index}>
-                        <ListItemButton
-                            sx={{
-                                borderRadius: 1,
-                                mb: 1,
-                            }}
-                            disabled={item.block}
-                            selected={location.pathname === item.path}
-                            onClick={() => navigate(item.path)}
-                        >
-                            <ListItemIcon>{item.icon}</ListItemIcon>
-                            <ListItemText primary={item.text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
+            <List
+                dense
+                sx={{
+                    "& .MuiListItemButton-root": {
+                        borderRadius: 1,
+                    },
+                }}
+            >
+                {mainListItems.map((item, index) => {
+                    if (item.collapse) {
+                        return (
+                            <>
+                                <ListItem disablePadding key={index}>
+                                    <ListItemButton
+                                        onClick={handleClick}
+                                        sx={{
+                                            borderRadius: 1,
+                                            mb: 1,
+                                        }}
+                                    >
+                                        <ListItemIcon>
+                                            <ListItemIcon>
+                                                {item.icon}
+                                            </ListItemIcon>
+                                        </ListItemIcon>
+                                        <ListItemText primary={item.text} />
+                                        {open ? <ExpandLess /> : <ExpandMore />}
+                                    </ListItemButton>
+                                </ListItem>
+                                {item.collapse &&
+                                    item.children &&
+                                    item.children.map((child, childIndex) => (
+                                        <BloodTestItem
+                                            key={childIndex}
+                                            open={open}
+                                            text={child.text}
+                                            Icon={child.icon}
+                                            path={child.path}
+                                        />
+                                    ))}
+                            </>
+                        );
+                    }
+
+                    return (
+                        <ListItem disablePadding key={index}>
+                            <ListItemButton
+                                sx={{
+                                    borderRadius: 1,
+                                    mb: 1,
+                                }}
+                                disabled={item?.block}
+                                selected={location.pathname === item.path}
+                                onClick={() => navigate(item.path)}
+                            >
+                                <ListItemIcon>{item.icon}</ListItemIcon>
+                                <ListItemText primary={item.text} />
+                            </ListItemButton>
+                        </ListItem>
+                    );
+                })}
             </List>
 
             <List dense>
