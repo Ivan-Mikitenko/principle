@@ -40,5 +40,40 @@ export const theme = createTheme({
                 },
             },
         },
+        MuiOutlinedInput: {
+            styleOverrides: {
+                notchedOutline: {
+                    borderColor: "#4a4a4a",
+                },
+                root: {
+                    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#4a4a4a",
+                        color: "#fff",
+                    },
+                },
+            },
+        },
+        MuiMenuItem: {
+            styleOverrides: {
+                root: {
+                    "&.Mui-selected": {
+                        backgroundColor: "#eeeeee !important",
+                    },
+                    "&.Mui-selected:hover": {
+                        backgroundColor: "#e0e0e0 !important",
+                    },
+                    "&:hover": {
+                        backgroundColor: "#f5f5f5 !important",
+                    },
+                },
+            },
+        },
+        MuiInputLabel: {
+            styleOverrides: {
+                root: {
+                    color: "#555 !important",
+                },
+            },
+        },
     },
 });

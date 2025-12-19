@@ -3,6 +3,7 @@ import AutoGraphIcon from "@mui/icons-material/AutoGraph";
 import BloodtypeIcon from "@mui/icons-material/Bloodtype";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
+import FavoriteTwoToneIcon from "@mui/icons-material/FavoriteTwoTone";
 import HelpRoundedIcon from "@mui/icons-material/HelpRounded";
 import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
 import PeopleRoundedIcon from "@mui/icons-material/PeopleRounded";
@@ -29,6 +30,11 @@ export type MenuItem = {
 };
 
 const mainListItems: MenuItem[] = [
+    {
+        text: "Моё здоровье",
+        icon: <FavoriteTwoToneIcon />,
+        path: "/dashboard/my-health",
+    },
     {
         text: "Анализы крови",
         icon: <BloodtypeIcon />,
