@@ -8,6 +8,7 @@ import { AuthPage } from "@pages/auth";
 import { BloodTestsPage } from "@pages/blood-tests";
 import { DashboardPage } from "@pages/dashboard";
 import { MyDynamicPage } from "@pages/my-danymic";
+import { PillTrackingPage } from "@pages/pill-tracking";
 import { ProfilePage } from "@pages/profile";
 
 const router = createBrowserRouter([
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "pill-tracking",
-                element: <div>pill-tracking</div>,
+                element: <PillTrackingPage />,
             },
             {
                 path: "profile",
