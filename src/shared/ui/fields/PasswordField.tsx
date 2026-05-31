@@ -1,12 +1,17 @@
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { IconButton, InputAdornment, TextField } from "@mui/material";
+import {
+    IconButton,
+    InputAdornment,
+    TextField,
+    type TextFieldProps,
+} from "@mui/material";
 import { useState } from "react";
 
 interface PasswordFieldProps {
     name?: string;
     autoComplete?: string;
-    value?: string;
-    onChange?: () => void;
+    value: string;
+    onChange: TextFieldProps["onChange"];
 }
 
 export const PasswordField = ({

@@ -12,7 +12,7 @@ export const RegistrationForm = ({ open }: Props) => {
             <Box sx={{ width: 400, borderRadius: 4 }}>
                 <FormControl>
                     <FormLabel htmlFor="password">Пароль</FormLabel>
-                    <PasswordField />
+                    <PasswordField value="" onChange={() => {}} />
                 </FormControl>
 
                 <Button variant="outlined" fullWidth>

@@ -11,6 +11,8 @@ import { styled } from "@mui/material/styles";
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
 
+import { ROUTES } from "@shared/config/routes.ts";
+
 import { MenuButton } from "./menu-button.tsx";
 
 const MenuItem = styled(MuiMenuItem)({
@@ -27,6 +29,9 @@ export const OptionsMenu = () => {
     };
 
     const handleClose = () => {
+        localStorage.removeItem("accessToken");
+        navigate(ROUTES.AUTH);
+
         setAnchorEl(null);
     };
 
